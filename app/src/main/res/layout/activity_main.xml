@@ -5,38 +5,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <RadioGroup
-        android:id="@+id/font_sizes_group"
+    <FrameLayout
+        android:id="@+id/input_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/font_size_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small" />
-
-        <RadioButton
-            android:id="@+id/font_size_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Medium" />
-
-        <RadioButton
-            android:id="@+id/font_size_large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large" />
-
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/message_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type your message" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/ok_button"

@@ -5,13 +5,12 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,9 +25,7 @@ public class MainActivity extends AppCompatActivity {
         fontMap.put("Large", 64);
     }
 
-    private EditText messageInput;
     private TextView messageOutput;
-    private RadioGroup fontSizesGroup;
     private RadioButton selectedFontButton;
 
     @Override
@@ -36,30 +33,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        messageInput = findViewById(R.id.message_input);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        InputFragment inputFragment = new InputFragment();
+        fragmentManager.beginTransaction().add(R.id.input_container, inputFragment).commit();
+
         messageOutput = findViewById(R.id.message_output);
-        fontSizesGroup = findViewById(R.id.font_sizes_group);
 
         Button okButton = findViewById(R.id.ok_button);
         Button cancelButton = findViewById(R.id.cancel_button);
 
         okButton.setOnClickListener(v -> {
-            int selectedId = fontSizesGroup.getCheckedRadioButtonId();
-            if (selectedId == -1) {
-                showToast("Виберіть розмір шрифту");
-                return;
-            }
-
-            if (messageInput.getText().toString().length() == 0) {
+            String message = inputFragment.getMessageText();
+            if (message.length() == 0) {
                 showToast("Наберіть, будь-ласка, повідомлення");
                 return;
             }
 
-            selectedFontButton = findViewById(selectedId);
             try {
-                int fontSize = fontMap.get(selectedFontButton.getText().toString());
-
-                String message = messageInput.getText().toString();
+                int fontSize = inputFragment.getSelectedFontSize();
 
                 messageOutput.setText(message);
                 messageOutput.setTextSize(fontSize);
@@ -70,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cancelButton.setOnClickListener(v -> {
-            messageInput.setText("");
+            inputFragment.clearText();
             messageOutput.setText("");
         });
     }
