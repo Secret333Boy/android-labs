@@ -9,4 +9,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Відміна</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="type_your_message">Type your message</string>
+    <string name="title_activity_data">DataActivity</string>
+    <string name="open">Open</string>
+    <string name="message">Message</string>
+    <string name="font_size">Font size</string>
+    <string name="open_history">Open history</string>
 </resources>

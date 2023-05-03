@@ -5,6 +5,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <Button
+        android:id="@+id/open_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_history" />
+
     <FrameLayout
         android:id="@+id/input_container"
         android:layout_width="match_parent"
@@ -14,7 +20,7 @@
         android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OK" />
+        android:text="@string/ok" />
 
     <FrameLayout
         android:id="@+id/cancel_container"

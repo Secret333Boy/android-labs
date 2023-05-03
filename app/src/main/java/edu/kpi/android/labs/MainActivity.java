@@ -1,5 +1,6 @@
 package edu.kpi.android.labs;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -22,13 +27,10 @@ public class MainActivity extends AppCompatActivity {
         InputFragment inputFragment = new InputFragment();
         OutputFragment outputFragment = new OutputFragment();
         CancelFragment cancelFragment = new CancelFragment(inputFragment, outputFragment);
-        fragmentManager.beginTransaction()
-                .add(R.id.input_container, inputFragment)
-                .add(R.id.cancel_container, cancelFragment)
-                .add(R.id.output_container, outputFragment)
-                .commit();
+        fragmentManager.beginTransaction().add(R.id.input_container, inputFragment).add(R.id.cancel_container, cancelFragment).add(R.id.output_container, outputFragment).commit();
 
         Button okButton = findViewById(R.id.ok_button);
+        Button openButton = findViewById(R.id.open_button);
 
         okButton.setOnClickListener(v -> {
             String message = inputFragment.getMessageText();
@@ -43,9 +45,20 @@ public class MainActivity extends AppCompatActivity {
                 outputFragment.setMessageOutput(message);
                 outputFragment.setOutputTextSize(fontSize);
                 outputFragment.setOutputTypeface(Typeface.BOLD);
-            } catch (NullPointerException e) {
+
+                FileOutputStream fileOutputStream = openFileOutput("store.txt", MODE_APPEND);
+
+                fileOutputStream.write((fontSize + ";" + message + "\n").getBytes(StandardCharsets.UTF_8));
+                fileOutputStream.close();
+                showToast("Successfully saved result!");
+            } catch (NullPointerException | IOException e) {
                 showToast(e.toString());
             }
+        });
+
+        openButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DataActivity.class);
+            startActivity(intent);
         });
     }
 
