@@ -14,6 +14,10 @@ public class OutputFragment extends Fragment {
 
     private TextView messageOutput;
 
+    public OutputFragment() {
+        // Required empty public constructor
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

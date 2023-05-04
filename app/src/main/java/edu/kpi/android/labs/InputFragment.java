@@ -19,6 +19,10 @@ public class InputFragment extends Fragment {
     private RadioButton fontSizeLarge;
     private EditText messageInput;
 
+    public InputFragment() {
+        // Required empty public constructor
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
