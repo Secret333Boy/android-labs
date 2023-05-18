@@ -20,4 +20,10 @@
     <string name="message">Message</string>
     <string name="font_size">Font size</string>
     <string name="open_history">Open history</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="open_video">Open video</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="your_link">Your link</string>
 </resources>

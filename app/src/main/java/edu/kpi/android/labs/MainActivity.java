@@ -1,6 +1,8 @@
 package edu.kpi.android.labs;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import java.io.FileOutputStream;
@@ -22,6 +26,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
+        }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE}, 2);
+        }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         InputFragment inputFragment = new InputFragment();
@@ -30,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().add(R.id.input_container, inputFragment).add(R.id.cancel_container, cancelFragment).add(R.id.output_container, outputFragment).commit();
 
         Button okButton = findViewById(R.id.ok_button);
-        Button openButton = findViewById(R.id.open_button);
+        Button openDataButton = findViewById(R.id.open_button);
+        Button openVideoButton = findViewById(R.id.open_video);
 
         okButton.setOnClickListener(v -> {
             String message = inputFragment.getMessageText();
@@ -56,8 +76,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        openButton.setOnClickListener(v -> {
+        openDataButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, DataActivity.class);
+            startActivity(intent);
+        });
+
+        openVideoButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VideoActivity.class);
             startActivity(intent);
         });
     }
