@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Button okButton = findViewById(R.id.ok_button);
         Button openDataButton = findViewById(R.id.open_button);
         Button openVideoButton = findViewById(R.id.open_video);
+        Button openAudioButton = findViewById(R.id.open_audio);
 
         okButton.setOnClickListener(v -> {
             String message = inputFragment.getMessageText();
@@ -83,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         openVideoButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, VideoActivity.class);
+            startActivity(intent);
+        });
+
+        openAudioButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AudioActivity.class);
             startActivity(intent);
         });
     }

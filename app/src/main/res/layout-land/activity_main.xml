@@ -17,6 +17,12 @@
         android:layout_height="wrap_content"
         android:text="@string/open_video" />
 
+    <Button
+        android:id="@+id/open_audio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_audio" />
+
     <FrameLayout
         android:id="@+id/input_container"
         android:layout_width="match_parent"
