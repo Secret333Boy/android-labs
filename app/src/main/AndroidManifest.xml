@@ -17,6 +17,11 @@
         android:theme="@style/Theme.AndroidLabs"
         tools:targetApi="31">
         <activity
+            android:name=".SensorActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sensor"
+            android:theme="@style/Theme.AndroidLabs.NoActionBar" />
+        <activity
             android:name=".AudioActivity"
             android:exported="false"
             android:label="@string/title_activity_audio"

@@ -68,7 +68,7 @@ public class AudioActivity extends AppCompatActivity {
         try {
             mediaPlayer.setDataSource(audioLinkInput.getText().toString());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 

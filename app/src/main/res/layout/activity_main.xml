@@ -21,6 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/open_audio" />
+    <Button
+        android:id="@+id/open_sensors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_sensors" />
 
     <FrameLayout
         android:id="@+id/input_container"

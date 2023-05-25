@@ -28,4 +28,15 @@
     <string name="your_link">Your link</string>
     <string name="title_activity_audio">AudioActivity</string>
     <string name="open_audio">Open audio</string>
+    <string name="x_accelerometer">X Accelerometer:</string>
+    <string name="y_accelerometer">Y Accelerometer:</string>
+    <string name="z_accelerometer">Z Accelerometer:</string>
+    <string name="x_magnetometer">X Magnetometer:</string>
+    <string name="y_magnetometer">Y Magnetometer:</string>
+    <string name="z_magnetometer">Z Magnetometer:</string>
+    <string name="open_sensors">Open sensors</string>
+    <string name="accelerometer">Accelerometer:</string>
+    <string name="magnetometer">Magnetometer:</string>
+    <string name="load_source">Load source</string>
+    <string name="title_activity_sensor">SensorActivity</string>
 </resources>
